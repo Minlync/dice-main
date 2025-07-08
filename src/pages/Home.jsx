@@ -33,9 +33,9 @@ export default function HomePage() {
         id="roll"
         className="roll-dice-btn" 
         onClick={rollDice}
-        style={{ marginTop: '10px', padding: '10px 20px 10px 20px', fontSize: '18px' }}
+        style={{ fontSize: '18px' }}
       >
-        Roll Dice
+        Surprise Me
       </button>
     </div>
   );
