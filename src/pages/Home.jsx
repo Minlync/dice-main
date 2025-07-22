@@ -1,17 +1,46 @@
 import React, { useRef, useState } from 'react';
 import '../style.css';
 
+const foodMap = {
+  1: 'Mexican',
+  2: 'Italian',
+  3: 'Japanese',
+  4: 'Indian',
+  5: 'Chinese',
+  6: 'Thai',
+};
+
 export default function HomePage() {
   const diceOneRef = useRef(null);
   const [diceOne, setDiceOne] = useState(1);
+  const [popupMessage, setPopupMessage] = useState('');
+  const [isRolling, setIsRolling] = useState(false);
 
   const rollDice = () => {
-    const newDiceOne = Math.floor(Math.random() * 6) + 1;
-    setDiceOne(newDiceOne);
+    if (isRolling) return;
 
-    if (diceOneRef.current) {
-      diceOneRef.current.className = `dice dice-one show-${newDiceOne}`;
-    }
+    setIsRolling(true);
+    setPopupMessage('');
+
+    let count = 0;
+    let currentFace = 1;
+
+    const rollInterval = setInterval(() => {
+      currentFace = Math.floor(Math.random() * 6) + 1;
+      setDiceOne(currentFace);
+      if (diceOneRef.current) {
+        diceOneRef.current.className = `dice dice-one show-${currentFace}`;
+      }
+
+      count++;
+      if (count >= 10) {
+        clearInterval(rollInterval);
+
+        // Final result is the last shown face
+        setPopupMessage(`🎉 Congrats! You rolled out ${foodMap[currentFace]} food!`);
+        setIsRolling(false);
+      }
+    }, 100);
   };
 
   return (
@@ -29,14 +58,22 @@ export default function HomePage() {
         </div>
       </div>
 
-      <button 
+      <button
         id="roll"
-        className="roll-dice-btn" 
+        className="roll-dice-btn"
         onClick={rollDice}
         style={{ fontSize: '18px' }}
+        disabled={isRolling}
       >
-        Surprise Me
+        {isRolling ? 'Rolling...' : 'Surprise Me'}
       </button>
+
+      {popupMessage && (
+        <div className="result-window">
+          {popupMessage}
+        </div>
+      )}
     </div>
   );
 }
+
