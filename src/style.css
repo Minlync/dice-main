@@ -131,8 +131,8 @@ body {
 /* Rotations per face */
 .show-1 { transform: rotateX(0deg) rotateY(0deg); }
 .show-2 { transform: rotateX(90deg) rotateY(0deg); }
-.show-3 { transform: rotateY(-90deg) rotateX(0deg); }
-.show-4 { transform: rotateY(90deg) rotateX(0deg); }
+.show-3 { transform: rotateY(270deg) rotateX(0deg); }
+.show-4 { transform: rotateY(360deg) rotateX(0deg); }
 .show-5 { transform: rotateX(-90deg) rotateY(0deg); }
 .show-6 { transform: rotateY(180deg) rotateX(0deg); }
 
@@ -172,7 +172,7 @@ body {
 
 /* Flip animation class */
 .rolling {
-animation: flip 0.6s linear infinite;
+animation: flip 1s ease-in-out infinite;
 }
 
 /* Simple 3D-like flip */
@@ -184,28 +184,36 @@ animation: flip 0.6s linear infinite;
 100% { transform: rotateX(0deg) rotateY(0deg); }
 }
 
-/* Dice styles – make sure dice rotates smoothly */
-.dice {
-transition: transform 0.3s ease;
-transform-style: preserve-3d;
-}
 
 /* Result window styling */
 .result-window {
-margin-top: 20px;
-padding: 16px 20px;
-background-color: #fffef5;
-color: #333;
-border: 2px solid #ffcc80;
-border-radius: 12px;
-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-font-size: 18px;
-text-align: center;
-max-width: 320px;
-margin-left: auto;
-margin-right: auto;
-animation: fadeIn 0.3s ease-in;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  
+  /* Keep your existing padding and sizing */
+  padding: 50px 50px;
+  font-size: 18px;
+  text-align: center; 
+  max-width: 320px;
+
+  
+  /* Updated styling for clean Material UI look */
+  background-color: white;  
+  color: #1a1a1a;         
+  border: none;           
+  border-radius: 16px;    
+  
+  /* Enhanced Material UI shadows */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 
+              0 4px 16px rgba(0, 0, 0, 0.08);
+  
+  /* Keep your fast animation but make it Material-style */
+  animation: materialFadeIn 0.15s ease-out;
 }
+
 
 @keyframes fadeIn {
 from { opacity: 0; transform: translateY(8px); }

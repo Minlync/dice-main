@@ -40,7 +40,7 @@ export default function HomePage() {
 
       setPopupMessage(`🎉 Congrats! You rolled out ${foodMap[finalSide]} food!`);
       setIsRolling(false);
-    }, 3000); // 3 second flip animation
+    }, 2000); // 2 second flip animation
   };
 
   return (
