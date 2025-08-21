@@ -27,18 +27,24 @@ export default function HomePage() {
       diceOneRef.current.classList.add('rolling');
     }
 
-    // Wait 3 seconds, then stop and show result
+    
     setTimeout(() => {
       const finalSide = Math.floor(Math.random() * 6) + 1;
       setDiceOne(finalSide);
 
       if (diceOneRef.current) {
         // Remove animation and show final face
-        diceOneRef.current.classList.remove('rolling');
+        // diceOneRef.current.classList.remove('rolling');
         diceOneRef.current.className = `dice dice-one show-${finalSide}`;
       }
 
-      setPopupMessage(`🎉 Congrats! You rolled out ${foodMap[finalSide]} food!`);
+      // setPopupMessage(`Congrats! You rolled out ${foodMap[finalSide]} food!`);
+      setPopupMessage({
+        title: ' Congrats!',
+        text: `You rolled out ${foodMap[finalSide]} food!`
+      });
+      
+
       setIsRolling(false);
     }, 2000); // 2 second flip animation
   };
@@ -69,10 +75,12 @@ export default function HomePage() {
       </button>
 
       {popupMessage && (
-        <div className="result-window">
-          {popupMessage}
-        </div>
-      )}
+  <div className="result-window">
+    <div style={{ fontSize: '24px', fontWeight: 'bold' }}>{popupMessage.title}</div>
+    <div style={{ fontSize: '18px', marginTop: '4px' }}>{popupMessage.text}</div>
+  </div>
+)}
+
     </div>
   );
 }

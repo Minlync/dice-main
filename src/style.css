@@ -172,7 +172,8 @@ body {
 
 /* Flip animation class */
 .rolling {
-animation: flip 1s ease-in-out infinite;
+/* animation: flip 1s ease-in-out infinite; */
+animation: flip 1s ease-in-out 3; 
 }
 
 /* Simple 3D-like flip */
