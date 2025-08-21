@@ -1,13 +1,13 @@
 // import logo from './logo.svg';
 import './App.css';
 import Navbar from './Navbar';
-import Home from './pages/Home'; 
+import Dice from './pages/Dice'; 
 
 function App() {
   return (
     <div>
         <Navbar />
-        <Home />
+        <Dice />
     </div>
  
   );

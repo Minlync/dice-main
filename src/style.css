@@ -1,213 +1,213 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    margin: 0;
-    background-color: #fffaf1;
+  margin: 0;
+  background-color: #fffaf1;
 }
 
 
 .nav {
-    background-color: #8BA629;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 14px;
-    padding: 0 14px;
-    height: 100px;
+  background-color: #8BA629;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  padding: 0 14px;
+  height: 100px;
 
 }
 
 .nav ul {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    display: flex;
-    gap:20px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  gap:20px;
 }
 
 .nav a {
-    color: inherit;
-    text-decoration: none;
-    font-size: 35px;
-    padding-left: 100px;
+  color: inherit;
+  text-decoration: none;
+  font-size: 35px;
+  padding-left: 100px;
 
 }
 
 /* Styling for the Contact Us button to match Roll Dice button */
 .contact-button {
-    padding: 10px 20px;
-    font-size: 18px;
-    cursor: pointer;
-    border: none;
-    background-color: #4CAF50;
-    color: white;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  border: none;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
 }
 
 .contact-button:hover {
-    background-color: #45a049;
+  background-color: #45a049;
 }
 
 
 /* HomePage.css */
 .homepage {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    text-align: center; /* Centers text and elements horizontally */
-    padding: 20px; /* Add padding around the page */
-  }
-  
-
-  
-  .roll-dice-btn {
-    margin-top: 260px;
-    padding: 10px 20px;
-    font-size: 18px;
-    cursor: pointer;
-    border: none;
-    background-color: #4CAF50;
-    color: white;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .roll-dice-btn:hover {
-    background-color: #45a049;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center; /* Centers text and elements horizontally */
+  padding: 20px; /* Add padding around the page */
+}
 
 
-  .game {
 
-    position: relative;
-    width: auto;
-    height: 100%;
-  }
+.roll-dice-btn {
+  margin-top: 260px;
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  border: none;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
 
-  .container {
+.roll-dice-btn:hover {
+  background-color: #45a049;
+}
 
-    position: relative;
-    display: inline-block;
-    top: 200px;
 
-  }
 
-  .dice {
-    width: 200px;
-    height: 200px;
-    position: relative;
-    transform-style: preserve-3d;
-    transform: rotateX(0deg) rotateY(0deg);
-    transition: transform 0.5s ease-in-out;
-  }
-  
-  .side {
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    background-color: white;
-    border: 1px solid #ccc;
-    border-radius: 12px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  /* 3D positioning of each side */
-  .side:nth-child(1) { transform: rotateY(0deg) translateZ(100px); }     /* front (1) */
-  .side:nth-child(2) { transform: rotateY(180deg) translateZ(100px); }   /* back (6) */
-  .side:nth-child(3) { transform: rotateY(90deg) translateZ(100px); }    /* right (3) */
-  .side:nth-child(4) { transform: rotateY(-90deg) translateZ(100px); }   /* left (4) */
-  .side:nth-child(5) { transform: rotateX(90deg) translateZ(100px); }    /* top (5) */
-  .side:nth-child(6) { transform: rotateX(-90deg) translateZ(100px); }   /* bottom (2) */
-  
-  /* Rotations per face */
-  .show-1 { transform: rotateX(0deg) rotateY(0deg); }
-  .show-2 { transform: rotateX(90deg) rotateY(0deg); }
-  .show-3 { transform: rotateY(-90deg) rotateX(0deg); }
-  .show-4 { transform: rotateY(90deg) rotateX(0deg); }
-  .show-5 { transform: rotateX(-90deg) rotateY(0deg); }
-  .show-6 { transform: rotateY(180deg) rotateX(0deg); }
-  
+.game {
 
-  .side:nth-child(1) {
-    transform: rotateY(0deg) translateZ(100px);
-    background-color: #ffa200; /* Side 1 - front */
-  }
-  
-  .side:nth-child(2) {
-    transform: rotateY(180deg) translateZ(100px);
-    background-color: #F2B3EE; /* Side 6 - back */
-  }
-  
-  .side:nth-child(3) {
-    transform: rotateY(90deg) translateZ(100px);
-    background-color: #0F8C75; /* Side 3 - right */
-  }
-  
-  .side:nth-child(4) {
-    transform: rotateY(-90deg) translateZ(100px);
-    background-color: #caffbf; /* Side 4 - left */
-  }
-  
-  .side:nth-child(5) {
-    transform: rotateX(90deg) translateZ(100px);
-    background-color: #032CA6; /* Side 5 - top */
-  }
-  
-  .side:nth-child(6) {
-    transform: rotateX(-90deg) translateZ(100px);
-    background-color: #F2490C; /* Side 2 - bottom */
-  }
-  
+  position: relative;
+  width: auto;
+  height: 100%;
+}
 
-  /* result */
+.container {
 
-  /* Flip animation class */
+  position: relative;
+  display: inline-block;
+  top: 200px;
+
+}
+
+.dice {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: rotateX(0deg) rotateY(0deg);
+  transition: transform 0.5s ease-in-out;
+}
+
+.side {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 3D positioning of each side */
+.side:nth-child(1) { transform: rotateY(0deg) translateZ(100px); }     /* front (1) */
+.side:nth-child(2) { transform: rotateY(180deg) translateZ(100px); }   /* back (6) */
+.side:nth-child(3) { transform: rotateY(90deg) translateZ(100px); }    /* right (3) */
+.side:nth-child(4) { transform: rotateY(-90deg) translateZ(100px); }   /* left (4) */
+.side:nth-child(5) { transform: rotateX(90deg) translateZ(100px); }    /* top (5) */
+.side:nth-child(6) { transform: rotateX(-90deg) translateZ(100px); }   /* bottom (2) */
+
+/* Rotations per face */
+.show-1 { transform: rotateX(0deg) rotateY(0deg); }
+.show-2 { transform: rotateX(90deg) rotateY(0deg); }
+.show-3 { transform: rotateY(-90deg) rotateX(0deg); }
+.show-4 { transform: rotateY(90deg) rotateX(0deg); }
+.show-5 { transform: rotateX(-90deg) rotateY(0deg); }
+.show-6 { transform: rotateY(180deg) rotateX(0deg); }
+
+
+.side:nth-child(1) {
+  transform: rotateY(0deg) translateZ(100px);
+  background-color: #ffa200; /* Side 1 - front */
+}
+
+.side:nth-child(2) {
+  transform: rotateY(180deg) translateZ(100px);
+  background-color: #F2B3EE; /* Side 6 - back */
+}
+
+.side:nth-child(3) {
+  transform: rotateY(90deg) translateZ(100px);
+  background-color: #0F8C75; /* Side 3 - right */
+}
+
+.side:nth-child(4) {
+  transform: rotateY(-90deg) translateZ(100px);
+  background-color: #caffbf; /* Side 4 - left */
+}
+
+.side:nth-child(5) {
+  transform: rotateX(90deg) translateZ(100px);
+  background-color: #032CA6; /* Side 5 - top */
+}
+
+.side:nth-child(6) {
+  transform: rotateX(-90deg) translateZ(100px);
+  background-color: #F2490C; /* Side 2 - bottom */
+}
+
+
+/* result */
+
+/* Flip animation class */
 .rolling {
-  animation: flip 0.6s linear infinite;
+animation: flip 0.6s linear infinite;
 }
 
 /* Simple 3D-like flip */
 @keyframes flip {
-  0%   { transform: rotateX(0deg) rotateY(0deg); }
-  25%  { transform: rotateX(180deg) rotateY(0deg); }
-  50%  { transform: rotateX(180deg) rotateY(180deg); }
-  75%  { transform: rotateX(0deg) rotateY(180deg); }
-  100% { transform: rotateX(0deg) rotateY(0deg); }
+0%   { transform: rotateX(0deg) rotateY(0deg); }
+25%  { transform: rotateX(180deg) rotateY(0deg); }
+50%  { transform: rotateX(180deg) rotateY(180deg); }
+75%  { transform: rotateX(0deg) rotateY(180deg); }
+100% { transform: rotateX(0deg) rotateY(0deg); }
 }
 
 /* Dice styles – make sure dice rotates smoothly */
 .dice {
-  transition: transform 0.3s ease;
-  transform-style: preserve-3d;
+transition: transform 0.3s ease;
+transform-style: preserve-3d;
 }
 
 /* Result window styling */
 .result-window {
-  margin-top: 20px;
-  padding: 16px 20px;
-  background-color: #fffef5;
-  color: #333;
-  border: 2px solid #ffcc80;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  font-size: 18px;
-  text-align: center;
-  max-width: 320px;
-  margin-left: auto;
-  margin-right: auto;
-  animation: fadeIn 0.3s ease-in;
+margin-top: 20px;
+padding: 16px 20px;
+background-color: #fffef5;
+color: #333;
+border: 2px solid #ffcc80;
+border-radius: 12px;
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+font-size: 18px;
+text-align: center;
+max-width: 320px;
+margin-left: auto;
+margin-right: auto;
+animation: fadeIn 0.3s ease-in;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
+from { opacity: 0; transform: translateY(8px); }
+to { opacity: 1; transform: translateY(0); }
 }
