@@ -1,5 +1,8 @@
 import React, { useRef, useState } from 'react';
 import '../style.css';
+import dice1 from '../assets/dice1.png';
+import dice2 from '../assets/dice2.png';
+
 
 const foodMap = {
   1: 'Mexican',
@@ -53,9 +56,19 @@ export default function HomePage() {
     <div className="homepage">
       <div className="game">
         <div className="container">
-          <div id="dice1" ref={diceOneRef} className={`dice dice-one show-${diceOne}`}>
-            <div className="side one"><div className="dot one-1"></div></div>
-            <div className="side two"><div className="dot two-1"></div><div className="dot two-2"></div></div>
+          <div id="dice1" 
+          ref={diceOneRef} 
+          className={`dice dice-one show-${diceOne}`}>
+
+            <div className="side one">
+              <img src={dice1} alt="Dice Background" className='dice-bg'/>
+              <div className="dice1"></div></div>
+            {/* dice 1 */}
+
+              <div className="side two">
+                   <img src={dice2} alt="Dice2 Background" className="dice-bg" />
+                     <div className="dice2"></div>
+                   </div>
             <div className="side three"><div className="dot three-1"></div><div className="dot three-2"></div><div className="dot three-3"></div></div>
             <div className="side four"><div className="dot four-1"></div><div className="dot four-2"></div><div className="dot four-3"></div><div className="dot four-4"></div></div>
             <div className="side five"><div className="dot five-1"></div><div className="dot five-2"></div><div className="dot five-3"></div><div className="dot five-4"></div><div className="dot five-5"></div></div>
