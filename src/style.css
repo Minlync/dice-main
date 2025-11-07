@@ -82,8 +82,10 @@ body {
   background-color: #45a049;
 }
 
-
-
+:root {
+  --size: 250px;
+  --depth: calc(var(--size) / 2); /* 125px */
+}
 .game {
 
   position: relative;
@@ -96,8 +98,13 @@ body {
   position: relative;
   display: inline-block;
   top: 200px;
+  perspective: 1000px;
+  perspective-origin: center;
 
 }
+
+/* FIX #3 — Add backface-visibility so flipped sides don’t show */
+
 
 .dice {
   width: 250px;
@@ -106,6 +113,7 @@ body {
   transform-style: preserve-3d;
   transform: rotateX(0deg) rotateY(0deg);
   transition: transform 0.5s ease-in-out;
+  backface-visibility: hidden;
 }
 
 .side {
@@ -118,15 +126,22 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  backface-visibility: hidden;
 }
 
+.dice, .side {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+
 /* 3D positioning of each side */
-.side:nth-child(1) { transform: rotateY(0deg) translateZ(100px); }     /* front (1) */
-.side:nth-child(2) { transform: rotateY(180deg) translateZ(100px); }   /* back (6) */
-.side:nth-child(3) { transform: rotateY(90deg) translateZ(100px); }    /* right (3) */
-.side:nth-child(4) { transform: rotateY(-90deg) translateZ(100px); }   /* left (4) */
-.side:nth-child(5) { transform: rotateX(90deg) translateZ(100px); }    /* top (5) */
-.side:nth-child(6) { transform: rotateX(-90deg) translateZ(100px); }   /* bottom (2) */
+.side:nth-child(1) { transform: rotateY(0deg) translateZ(125px); }     /* front (1) */
+.side:nth-child(2) { transform: rotateY(180deg) translateZ(125px); }   /* back (6) */
+.side:nth-child(3) { transform: rotateY(90deg) translateZ(125px); }    /* right (3) */
+.side:nth-child(4) { transform: rotateY(-90deg) translateZ(125px); }   /* left (4) */
+.side:nth-child(5) { transform: rotateX(90deg) translateZ(125px); }    /* top (5) */
+.side:nth-child(6) { transform: rotateX(-90deg) translateZ(125px); }   /* bottom (2) */
 
 /* Rotations per face */
 .show-1 { transform: rotateX(0deg) rotateY(0deg); }
@@ -138,32 +153,32 @@ body {
 
 
 .side:nth-child(1) {
-  transform: rotateY(0deg) translateZ(100px);
+  transform: rotateY(0deg) translateZ(125px);
   background-color: #ffa200; /* Side 1 - front */
 }
 
 .side:nth-child(2) {
-  transform: rotateY(180deg) translateZ(100px);
+  transform: rotateY(180deg) translateZ(125px);
   background-color: #F2B3EE; /* Side 6 - back */
 }
 
 .side:nth-child(3) {
-  transform: rotateY(90deg) translateZ(100px);
+  transform: rotateY(90deg) translateZ(125px);
   background-color: #0F8C75; /* Side 3 - right */
 }
 
 .side:nth-child(4) {
-  transform: rotateY(-90deg) translateZ(100px);
+  transform: rotateY(-90deg) translateZ(125px);
   background-color: #caffbf; /* Side 4 - left */
 }
 
 .side:nth-child(5) {
-  transform: rotateX(90deg) translateZ(100px);
+  transform: rotateX(90deg) translateZ(125px);
   background-color: #071bff; /* Side 5 - top */
 }
 
 .side:nth-child(6) {
-  transform: rotateX(-90deg) translateZ(100px);
+  transform: rotateX(-90deg) translateZ(125px);
   background-color: #F2490C; /* Side 2 - bottom */
 }
 
@@ -174,26 +189,17 @@ body {
 
 /* Simple 3D-like flip */
 .rolling {
-  animation: throwBounce 2s cubic-bezier(.25,.8,.5,1) forwards;
+  animation-name: spinRoll;
+  animation-timing-function: ease-out;
+  /* duration comes from inline style set in JS */
 }
 
-@keyframes throwBounce {
-  0% {
-    transform: translateY(0) rotateX(0) rotateY(0);
-  }
-  25% {
-    transform: translateY(-200px) rotateX(360deg) rotateY(180deg);
-  }
-  50% {
-    transform: translateY(-300px) rotateX(720deg) rotateY(540deg);
-  }
-  75% {
-    transform: translateY(-150px) rotateX(1080deg) rotateY(720deg);
-  }
-  100% {
-    transform: translateY(0) rotateX(1440deg) rotateY(900deg);
-  }
+@keyframes spinRoll {
+  0%   { transform: rotateX(0deg)   rotateY(0deg); }
+  40%  { transform: rotateX(360deg) rotateY(180deg); }
+  100% { transform: rotateX(1080deg) rotateY(900deg); }
 }
+
 
 
 
