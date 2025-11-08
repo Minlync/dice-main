@@ -1,16 +1,18 @@
 import React, { useRef, useState } from 'react';
 import '../style.css';
-import dice1 from '../assets/dice1.png';
-import dice2 from '../assets/dice2.png';
-
+import Mexican from '../assets/dice1.png';
+import Italian from '../assets/Italianfood.svg';
+import Chinese from '../assets/Chinesefood.svg';
+import Indian from '../assets/Indian.svg';
 
 const foodMap = {
-  1: 'Mexican',
-  2: 'Italian',
-  3: 'Japanese',
-  4: 'Indian',
-  5: 'Chinese',
-  6: 'Thai',
+ 
+  1: 'Mexican', //front
+  2: 'Thai',  // bottom
+  3: 'Chinese', //right
+  4: 'Indian', //left
+  5: 'Japanese', //top
+  6: 'Italian', //back
 };
 
 const FACE_CLASSES = ['show-1','show-2','show-3','show-4','show-5','show-6'];
@@ -68,22 +70,26 @@ export default function HomePage() {
             aria-label={`Showing face ${diceOne}`}
           >
             <div className="side one">
-              <img src={dice1} alt="Dice Background" className="dice-bg" />
-              <div className="dice1"></div>
+              <img src={Mexican} alt="Mexican" className="dice-bg" />
+              <div className="Mexican"></div>
             </div>
 
             <div className="side two">
-              <img src={dice2} alt="Dice2 Background" className="dice-bg" />
-              <div className="dice2"></div>
+              <img src={Italian} alt="Italian" className="dice-bg" />
+              <div className="Italian"></div>
+              <div className="dot three-1"></div>
+              <div className="dot three-2"></div>
             </div>
 
             <div className="side three">
+            <img src={Chinese} alt="Chinese" className="dice-bg" />
               <div className="dot three-1"></div>
               <div className="dot three-2"></div>
               <div className="dot three-3"></div>
             </div>
 
             <div className="side four">
+            <img src={Indian} alt="Indian" className="dice-bg" />
               <div className="dot four-1"></div>
               <div className="dot four-2"></div>
               <div className="dot four-3"></div>

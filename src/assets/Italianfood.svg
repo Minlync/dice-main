@@ -1,0 +1,16 @@
+<svg width="250" height="250" viewBox="0 0 250 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="250" height="250" rx="30" fill="#C8A2C9"/>
+<circle cx="172.347" cy="94.7132" r="42.6528" fill="white"/>
+<ellipse cx="172" cy="97.5" rx="22" ry="21.5" fill="#3EC6F9"/>
+<circle cx="174" cy="99" r="11" fill="black"/>
+<circle cx="165" cy="90" r="7" fill="white"/>
+<circle cx="168.5" cy="106.5" r="5.5" fill="white"/>
+<circle cx="88.0491" cy="95.0491" r="48.0491" fill="white" stroke="#C8A2C9" stroke-width="6"/>
+<ellipse cx="94" cy="96.5" rx="22" ry="21.5" fill="#3EC6F9"/>
+<circle cx="96" cy="98" r="11" fill="black"/>
+<circle cx="87" cy="89" r="7" fill="white"/>
+<circle cx="90.5" cy="105.5" r="5.5" fill="white"/>
+<path d="M221 135C221 178.63 179.81 214 129 214C78.1898 214 37 178.63 37 135" stroke="#905E92" stroke-width="6"/>
+<path d="M46 137H28C28 137 31.9474 133.451 35.4483 133.043C39.9851 132.515 46 137 46 137Z" fill="#905E92" stroke="#905E92"/>
+<path d="M230 137H212C212 137 215.947 133.451 219.448 133.043C223.985 132.515 230 137 230 137Z" fill="#905E92" stroke="#905E92"/>
+</svg>

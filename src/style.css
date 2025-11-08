@@ -144,12 +144,12 @@ body {
 .side:nth-child(6) { transform: rotateX(-90deg) translateZ(125px); }   /* bottom (2) */
 
 /* Rotations per face */
-.show-1 { transform: rotateX(0deg) rotateY(0deg); }
-.show-2 { transform: rotateX(90deg) rotateY(0deg); }
-.show-3 { transform: rotateY(270deg) rotateX(0deg); }
-.show-4 { transform: rotateY(360deg) rotateX(0deg); }
-.show-5 { transform: rotateX(-90deg) rotateY(0deg); }
-.show-6 { transform: rotateY(180deg) rotateX(0deg); }
+.show-1 { transform: rotateX(0deg) rotateY(0deg); }       /* front → Mexican */
+.show-2 { transform: rotateX(90deg) rotateY(0deg); }      /* bottom → Thai */
+.show-3 { transform: rotateY(-90deg) rotateX(0deg); }     /* right → Chinese */
+.show-4 { transform: rotateY(90deg) rotateX(0deg); }      /* left → Indian */
+.show-5 { transform: rotateX(-90deg) rotateY(0deg); }     /* top → Japanese */
+.show-6 { transform: rotateY(180deg) rotateX(0deg); }     /* back → Italian */
 
 
 .side:nth-child(1) {
