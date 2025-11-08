@@ -8,9 +8,10 @@ export default function Navbar() {
         </a>
         <ul>
             <li>
-            <button className="contact-button">Contact Us</button>
+            <a href="https://www.evelync.com/" className="contact-button">Creator 
+            </a>
             </li>
-        </ul>
-    </nav>
-    )
+            </ul>
+            </nav>
+    );
 }
