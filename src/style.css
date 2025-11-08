@@ -67,8 +67,8 @@ body {
 
 
 .roll-dice-btn {
-  margin-top: 260px;
-  padding: 10px 20px;
+  margin-top: 30px; /* ✅ 30px gap below dice */
+  padding: 10px 24px;
   font-size: 18px;
   cursor: pointer;
   border: none;
