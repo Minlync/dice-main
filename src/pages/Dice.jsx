@@ -4,6 +4,7 @@ import Mexican from '../assets/dice1.png';
 import Italian from '../assets/Italianfood.svg';
 import Chinese from '../assets/Chinesefood.svg';
 import Indian from '../assets/Indian.svg';
+import Thai from '../assets/thai.svg';
 
 const foodMap = {
  
@@ -105,6 +106,7 @@ export default function HomePage() {
             </div>
 
             <div className="side six">
+            <img src={Thai} alt="Thai" className="dice-bg" />
               <div className="dot six-1"></div>
               <div className="dot six-2"></div>
               <div className="dot six-3"></div>
