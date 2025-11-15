@@ -100,6 +100,73 @@ body {
 /* wrapper */
 
 
+
+/* 💬 dialogue bubble above the dice */
+/* 💬 Container for bubble */
+.dice-dialog {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+
+  /* Slide down first → then float */
+  opacity: 0;
+  transform: translateY(-40px);
+  animation:
+    slideDown 0.8s ease-out forwards 0.2s,   /* appear after 2s */
+    bubbleFloat 2.5s ease-in-out infinite 3s; /* start floating after appearing */
+}
+
+/* Slide down animation */
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Gentle floating effect */
+@keyframes bubbleFloat {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* 💬 Bubble styling */
+.dice-dialog-bubble {
+  position: relative;
+  max-width: 320px;
+  padding: 12px 16px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+  font-size: 18px;
+  line-height: 1.4;
+  color: #333;
+}
+
+/* Bubble tail */
+.dice-dialog-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 40px;
+  border-width: 10px 10px 0 10px;
+  border-style: solid;
+  border-color: #ffffff transparent transparent transparent;
+}
+
+
+
 .roll-dice-btn {
   margin-top: 250px; /* ✅ 30px gap below dice */
   width: 200px;

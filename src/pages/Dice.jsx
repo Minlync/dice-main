@@ -65,6 +65,20 @@ export default function HomePage() {
           <div className="container">
             <div className="ellipse-bg"></div>
 
+          {/* 💬 talking bubble (appears after 2s, disappears on roll) */}
+          {!isRolling && diceOne === 0 && (
+           <div className="dice-dialog slide-in">
+             <div className="dice-dialog-bubble">
+             <span>
+              Hi, don't know what to eat?
+              <br />
+                Roll me!
+              </span>
+               </div>
+           </div>
+          )}
+
+
             <div className="dice-wrapper">
               {/* The actual 3D dice (always rendered so animation works) */}
               <div
