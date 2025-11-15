@@ -8,22 +8,20 @@ import Thai from '../assets/thai.svg';
 import Mediterranean from '../assets/pinkface.svg';
 import Cover from '../assets/wink.svg';
 
-
 const foodMap = {
-  0: 'Cover',
-  1: 'Fast',   // front
-  2: 'Thai',      // bottom
-  3: 'Chinese',   // right
-  4: 'Seafood',    // left
+  1: 'Fast',           // front
+  2: 'Thai',           // bottom
+  3: 'Chinese',        // right
+  4: 'Seafood',        // left
   5: 'Mediterranean',  // top
-  6: 'Italian',   // back
+  6: 'Italian',        // back
 };
 
-const FACE_CLASSES = ['show-1','show-2','show-3','show-4','show-5','show-6'];
+const FACE_CLASSES = ['show-1', 'show-2', 'show-3', 'show-4', 'show-5', 'show-6'];
 
 export default function HomePage() {
   const diceOneRef = useRef(null);
-  const [diceOne, setDiceOne] = useState(0); 
+  const [diceOne, setDiceOne] = useState(0); // 0 = cover state
   const [popupMessage, setPopupMessage] = useState('');
   const [isRolling, setIsRolling] = useState(false);
 
@@ -34,6 +32,7 @@ export default function HomePage() {
     setIsRolling(true);
     setPopupMessage(null);
 
+    // remove previous face classes
     el.classList.remove(...FACE_CLASSES);
     el.classList.add('rolling');
 
@@ -41,7 +40,7 @@ export default function HomePage() {
       el.removeEventListener('animationend', onEnd);
       el.classList.remove('rolling');
 
-      const finalSide = Math.floor(Math.random() * 6) + 1;
+      const finalSide = Math.floor(Math.random() * 6) + 1; // 1–6 only
 
       // Force reflow
       // eslint-disable-next-line no-unused-expressions
@@ -61,46 +60,50 @@ export default function HomePage() {
 
   return (
     <div className="homepage">
-      {/* ✅ stack controls the 30px gaps */}
       <div className="dice-flow">
         <div className="game">
           <div className="container">
-          <div className="ellipse-bg"></div> 
+            <div className="ellipse-bg"></div>
 
-            <div
-              id="dice1"
-              ref={diceOneRef}
-              className={`dice dice-one show-${diceOne}`}
-              aria-label={`Showing face ${diceOne}`}
-            >
-              
-
-              <div className="side zero">
-              <img src={Cover} alt="Page" />
+            <div className="dice-wrapper">
+              {/* The actual 3D dice (always rendered so animation works) */}
+              <div
+                id="dice1"
+                ref={diceOneRef}
+                className={`dice dice-one show-${diceOne === 0 ? 1 : diceOne}`}
+                aria-label={`Showing face ${diceOne}`}
+              >
+                <div className="side one">
+                  <img src={Fastfood} alt="Fastfood" className="dice-bg" />
                 </div>
-              <div className="side one">
-                <img src={Fastfood} alt="Fastfood" className="dice-bg" />
+
+                <div className="side two">
+                  <img src={Italian} alt="Italian" className="dice-bg" />
+                </div>
+
+                <div className="side three">
+                  <img src={Chinese} alt="Chinese" className="dice-bg" />
+                </div>
+
+                <div className="side four">
+                  <img src={Seafood} alt="Seafood" className="dice-bg" />
+                </div>
+
+                <div className="side five">
+                  <img src={Mediterranean} alt="Drink" className="dice-bg" />
+                </div>
+
+                <div className="side six">
+                  <img src={Thai} alt="Thai" className="dice-bg" />
+                </div>
               </div>
 
-              <div className="side two">
-                <img src={Italian} alt="Italian" className="dice-bg" />
-              </div>
-
-              <div className="side three">
-                <img src={Chinese} alt="Chinese" className="dice-bg" />
-              </div>
-
-              <div className="side four">
-                <img src={Seafood} alt="Seafood" className="dice-bg" />
-              </div>
-
-              <div className="side five">
-              <img src={Mediterranean} alt="Drink" className="dice-bg" />
-              </div>
-
-              <div className="side six">
-                <img src={Thai} alt="Thai" className="dice-bg" />
-              </div>
+              {/* dice 0 = cover overlay, only before first roll */}
+              {diceOne === 0 && (
+                <div className="dice-cover">
+                  <img src={Cover} alt="Cover" className="dice-cover-img" />
+                </div>
+              )}
             </div>
           </div>
         </div>
