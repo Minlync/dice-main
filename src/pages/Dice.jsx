@@ -1,18 +1,21 @@
 import React, { useRef, useState } from 'react';
 import '../style.css';
-import Mexican from '../assets/dice1.png';
+import Fastfood from '../assets/dice1.png';
 import Italian from '../assets/Italianfood.svg';
 import Chinese from '../assets/Chinesefood.svg';
-import Indian from '../assets/Indian.svg';
+import Seafood from '../assets/Seafood.svg';
 import Thai from '../assets/thai.svg';
-// import Japanese from '../assets/Japanese.svg'; // ✅ add this
+import Mediterranean from '../assets/pinkface.svg';
+import Cover from '../assets/wink.svg';
+
 
 const foodMap = {
-  1: 'Mexican',   // front
+  0: 'Cover',
+  1: 'Fast',   // front
   2: 'Thai',      // bottom
   3: 'Chinese',   // right
-  4: 'Indian',    // left
-  5: 'Japanese',  // top
+  4: 'Seafood',    // left
+  5: 'Mediterranean',  // top
   6: 'Italian',   // back
 };
 
@@ -20,7 +23,7 @@ const FACE_CLASSES = ['show-1','show-2','show-3','show-4','show-5','show-6'];
 
 export default function HomePage() {
   const diceOneRef = useRef(null);
-  const [diceOne, setDiceOne] = useState(1);
+  const [diceOne, setDiceOne] = useState(0); 
   const [popupMessage, setPopupMessage] = useState('');
   const [isRolling, setIsRolling] = useState(false);
 
@@ -62,14 +65,21 @@ export default function HomePage() {
       <div className="dice-flow">
         <div className="game">
           <div className="container">
+          <div className="ellipse-bg"></div> 
+
             <div
               id="dice1"
               ref={diceOneRef}
               className={`dice dice-one show-${diceOne}`}
               aria-label={`Showing face ${diceOne}`}
             >
+              
+
+              <div className="side zero">
+              <img src={Cover} alt="Page" />
+                </div>
               <div className="side one">
-                <img src={Mexican} alt="Mexican" className="dice-bg" />
+                <img src={Fastfood} alt="Fastfood" className="dice-bg" />
               </div>
 
               <div className="side two">
@@ -81,11 +91,11 @@ export default function HomePage() {
               </div>
 
               <div className="side four">
-                <img src={Indian} alt="Indian" className="dice-bg" />
+                <img src={Seafood} alt="Seafood" className="dice-bg" />
               </div>
 
               <div className="side five">
-              
+              <img src={Mediterranean} alt="Drink" className="dice-bg" />
               </div>
 
               <div className="side six">
