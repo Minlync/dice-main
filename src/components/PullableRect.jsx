@@ -1,81 +1,40 @@
-import React, { useRef, useState } from "react";
+// src/components/PullableRect.jsx
+import React, { useState } from "react";
 import "./PullableRect.css";
 
 export default function PullableRect({ children }) {
-  const [pull, setPull] = useState(0);
-  const startXRef = useRef(0);
-  const draggingRef = useRef(false);
+  const [pulled, setPulled] = useState(false);
 
-  const MAX_PULL = 70;
-
-  /* -------- desktop: mouse -------- */
-  const onMouseDown = (e) => {
-    draggingRef.current = true;
-    startXRef.current = e.clientX;
-
-    // ⭐ 把事件绑到 window（全局接管拖动）
-    window.addEventListener("mousemove", onMouseMove);
-    window.addEventListener("mouseup", stopMouse);
+  const handlePressStart = () => {
+    setPulled(true);   // 按下 → 拉出
   };
 
-  const onMouseMove = (e) => {
-    if (!draggingRef.current) return;
-
-    const dx = e.clientX - startXRef.current;
-    const clamped = Math.max(0, Math.min(MAX_PULL, dx));
-    setPull(clamped);
-  };
-
-  const stopMouse = () => {
-    draggingRef.current = false;
-    setPull(0);
-
-    // ⭐ 把事件解绑
-    window.removeEventListener("mousemove", onMouseMove);
-    window.removeEventListener("mouseup", stopMouse);
-  };
-
-  /* -------- mobile: touch -------- */
-  const onTouchStart = (e) => {
-    const touch = e.touches[0];
-    draggingRef.current = true;
-    startXRef.current = touch.clientX;
-
-    // ⭐ 手机也要绑定全局事件
-    window.addEventListener("touchmove", onTouchMove, { passive: false });
-    window.addEventListener("touchend", stopTouch);
-  };
-
-  const onTouchMove = (e) => {
-    if (!draggingRef.current) return;
-    const touch = e.touches[0];
-
-    const dx = touch.clientX - startXRef.current;
-    const clamped = Math.max(0, Math.min(MAX_PULL, dx));
-    setPull(clamped);
-
-    e.preventDefault();
-  };
-
-  const stopTouch = () => {
-    draggingRef.current = false;
-    setPull(0);
-
-    window.removeEventListener("touchmove", onTouchMove);
-    window.removeEventListener("touchend", stopTouch);
+  const handlePressEnd = () => {
+    setPulled(false);  // 松开 → 弹回
   };
 
   return (
-    <div className="pull-rect" style={{ "--pull": `${pull}px` }}>
+    <div
+      className={`pull-rect ${pulled ? "pulled" : ""}`}
+      onMouseDown={handlePressStart}
+      onMouseUp={handlePressEnd}
+      onMouseLeave={handlePressEnd}
+      onTouchStart={handlePressStart}
+      onTouchEnd={handlePressEnd}
+      onTouchCancel={handlePressEnd}
+    >
       <div className="pull-rect-inner">{children}</div>
 
+      {/* 右侧中点的“按压”区域，只负责触发事件 */}
       <div
-        className="pull-handle"
-        onMouseDown={onMouseDown}
-        onTouchStart={onTouchStart}
-      >
-        <div className="pull-handle-dot" />
-      </div>
+        className="pull-hotspot"
+        onMouseDown={handlePressStart}
+        onMouseUp={handlePressEnd}
+        onMouseLeave={handlePressEnd}
+        onTouchStart={handlePressStart}
+        onTouchEnd={handlePressEnd}
+        onTouchCancel={handlePressEnd}
+      />
     </div>
   );
 }

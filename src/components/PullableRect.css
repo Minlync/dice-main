@@ -1,51 +1,48 @@
+/* 外层黄色块：比骰子宽一点，让右边有位置伸出去 */
 .pull-rect {
   position: relative;
-  width: 250px;
+  z-index: 9999;
+  width: 320px;   /* 👈 250（骰子） + 70（要拉出的尖） */
   height: 250px;
   background: #ffbb00;
   border-radius: 28px;
-  --pull: 0px;
+  overflow: hidden;
+  touch-action: none;
+  cursor: pointer;
 
-  /* 默认是完整正方形，拉的时候右边伸出去像箭头 */
+}
+
+
+/* 按下 / 拉出状态：右边长出尖尖，伸到 320px */
+.pull-rect.pulled {
   clip-path: polygon(
     0 0,
-    100% 0,
-    calc(100% + var(--pull)) 50%,
-    100% 100%,
+    250px 0,
+    -220px 50%,   /* 👈 尖尖在最右边 */
+    250px 100%,
     0 100%
   );
-
-  transition: clip-path 0.28s cubic-bezier(0.25, 1.4, 0.4, 1);
-  overflow: hidden;
+  transform: translateX(-10px) scale(1.03);
 }
 
 .pull-rect-inner {
-  width: 100%;
-  height: 100%;
+  /* 里面内容只占左边 250px 的“骰子区域” */
+  width: 250px;
+  height: 250px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.pull-handle {
+/* 右侧中间的热区（点击这里触发拉出效果） */
+.pull-hotspot {
   position: absolute;
-  right: -20px;
+  right: 0;
   top: 50%;
   transform: translateY(-50%);
-  width: 60px;
+  width: 70px;   /* 和右边预留的 70px 对齐 */
   height: 100px;
-  cursor: grab;        /* desktop 看得见是可拖的 */
-  touch-action: none;  /* mobile 不让页面滚动 */
-}
-
-.pull-handle-dot {
-  position: absolute;
-  left: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: #fff;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+  /* 调试时可以打开看看范围：
+  background: rgba(0, 0, 0, 0.1);
+  */
 }

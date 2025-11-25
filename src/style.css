@@ -83,13 +83,14 @@ body {
 /* cover for dice 0 (pre-roll state) */
 .dice-cover {
   position: absolute;
+  
   inset: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 30px;
-  overflow: hidden;
-  z-index: 2;
+  /* 很重要：不要 overflow: hidden; */
+  overflow: visible;
+  z-index: 5;   /* 比 3D 骰子高 */
 }
 
 .dice-cover-img {
