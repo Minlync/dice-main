@@ -1,0 +1,51 @@
+.pull-rect {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  background: #ffbb00;
+  border-radius: 28px;
+  --pull: 0px;
+
+  /* 默认是完整正方形，拉的时候右边伸出去像箭头 */
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    calc(100% + var(--pull)) 50%,
+    100% 100%,
+    0 100%
+  );
+
+  transition: clip-path 0.28s cubic-bezier(0.25, 1.4, 0.4, 1);
+  overflow: hidden;
+}
+
+.pull-rect-inner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pull-handle {
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 60px;
+  height: 100px;
+  cursor: grab;        /* desktop 看得见是可拖的 */
+  touch-action: none;  /* mobile 不让页面滚动 */
+}
+
+.pull-handle-dot {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+}
