@@ -6,7 +6,8 @@ import Chinese from '../assets/Chinesefood.svg';
 import Seafood from '../assets/Seafood.svg';
 import Thai from '../assets/thai.svg';
 import Mediterranean from '../assets/pinkface.svg';
-import Cover from '../assets/wink.svg';
+import WinkFace from "../components/WinkFace";
+
 
 const foodMap = {
   1: 'Fast',           // front
@@ -63,7 +64,10 @@ export default function HomePage() {
       <div className="dice-flow">
         <div className="game">
           <div className="container">
-            <div className="ellipse-bg"></div>
+            <div className="ellipse-bg">
+            </div>
+            
+      
 
           {/* 💬 talking bubble (appears after 2s, disappears on roll) */}
           {!isRolling && diceOne === 0 && (
@@ -115,7 +119,7 @@ export default function HomePage() {
               {/* dice 0 = cover overlay, only before first roll */}
               {diceOne === 0 && (
                 <div className="dice-cover">
-                  <img src={Cover} alt="Cover" className="dice-cover-img" />
+                    <WinkFace />
                 </div>
               )}
             </div>

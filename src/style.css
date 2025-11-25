@@ -350,21 +350,19 @@ body {
 }
 
 
-/* /backgroud  */
 .ellipse-bg {
   position: absolute;
-  width: 130vw;
-  height: 105vw;
-  max-width: 1920px;
-  max-height: 750px;
-  transform: translate(-50%, 0%);
-  left: 50%;
-  top: 50%;
-  background: #F8EDBE;
-  border-radius: 50%;
-  z-index: -1;          /* stays behind */
-  pointer-events: none; /* no click blocking */
+  top: 50px;        /* place it 500px down */
+  left: 0;
+  width: 110vw;      /* full responsive width */
+  transform: translateX(-20%); 
+  height: auto;   
 }
+
+
+
+
+
 
 @keyframes fadeIn {
 from { opacity: 0; transform: translateY(8px); }
@@ -384,6 +382,7 @@ to { opacity: 1; transform: translateY(0); }
     margin-top: 80px; /* Button moves up */
   }
 
+
   .result-window {
     bottom: 10px;      /* Popup stays above the button */
     padding: 16px 24px;
@@ -391,8 +390,5 @@ to { opacity: 1; transform: translateY(0); }
     max-width: 260px;
   }
 
-  .ellipse-bg {
-    width: 200vw;
-    height: 200vw;
-  }
+  
 }

@@ -1,0 +1,72 @@
+/* Optional page centering */
+.wink-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+  }
+  
+  /* Main yellow face box */
+  .wink {
+    position: relative;
+    width: 251.94px;
+    height: 260px;
+    background: #FFBB00;     /* background */
+    border-radius: 30px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+    overflow: hidden;
+  }
+  
+  /* Right eye container */
+  .eye {
+    position: absolute;
+    width: 75.58px;
+    height: 78px;
+    top: 65px;
+    right: 45px;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* White part of the eye */
+  .eye-white {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #FFFFFF;     /* eyes */
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  
+  /* Pupil / eyeball */
+  .eyeball {
+    position: absolute;
+    width: 44.34px;
+    height: 45.76px;
+    background: #030303;     /* eyeballs */
+    border-radius: 50%;
+  
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* centered by default */
+    transition: transform 0.05s linear;
+  }
+  
+  /* Left eye (wink line) */
+  .eye-left {
+    position: absolute;
+    bottom: 55%;
+    left: 20%;
+  }
+  
+  /* Mouth */
+  .winkmouth {
+  position: absolute;
+  bottom: 25%;     /* adjust as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  }
+  
