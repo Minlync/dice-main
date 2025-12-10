@@ -318,24 +318,23 @@ body {
 
 /* Result window styling */
 .result-window {
-  /* position: fixed; */
-  margin-top: 30px;
-  padding: 20px 30px;
+  position: absolute;          /* float above dice */
+  bottom: 400px;               /* adjust so it’s just above the dice */
+  left: 50%;                   /* center horizontally */
+  transform: translateX(-50%); /* truly centered */
 
+  z-index: 10;                 /* above dice */
+
+  /* keep your original styles */
+  padding: 20px 30px;
   font-size: 18px;
   max-width: 320px;
   text-align: center;
-  
   background-color: white;
   color: #1a1a1a;
   border-radius: 16px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12),
               0 4px 16px rgba(0, 0, 0, 0.08);
-  
-  animation: materialFadeIn 0.15s ease-out;
-
-  position: relative;   /* REQUIRED for z-index to work */
-  z-index: 10;      
 }
 
 
@@ -385,7 +384,7 @@ to { opacity: 1; transform: translateY(0); }
 
 
   .result-window {
-    bottom: 10px;      /* Popup stays above the button */
+    bottom: -100px;      /* Popup stays above the button */
     padding: 16px 24px;
     font-size: 16px;
     max-width: 260px;
