@@ -32,17 +32,25 @@ export default function WinkFace() {
         eyeball.style.transform = `translate(-50%, -50%) translate(${x}px, ${y}px)`;
       });
     };
+
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
+
+  // Handlers for both mouse and touch
+  const handlePressStart = () => setPressed(true);
+  const handlePressEnd = () => setPressed(false);
 
   return (
     <div
       className="wink-wrapper"
       ref={wrapperRef}
-      onMouseDown={() => setPressed(true)}
-      onMouseUp={() => setPressed(false)}
-      onMouseLeave={() => setPressed(false)}
+      onMouseDown={handlePressStart}
+      onMouseUp={handlePressEnd}
+      onMouseLeave={handlePressEnd}
+      onTouchStart={handlePressStart}    // mobile tap start
+      onTouchEnd={handlePressEnd}        // mobile tap end
+      onTouchCancel={handlePressEnd}     // mobile canceled touch
     >
       {/* .wink container */}
       <div className="wink">
