@@ -7,7 +7,6 @@ import Seafood from '../assets/Seafood.svg';
 import Thai from '../assets/thai.svg';
 import Mediterranean from '../assets/pinkface.svg';
 import WinkFace from "../components/WinkFace";
-import PullableRect from "../components/PullableRect";
 
 const foodMap = {
   1: 'Fast',           // front
@@ -119,9 +118,9 @@ export default function HomePage() {
               {/* dice 0 = cover overlay, only before first roll */}
               {diceOne === 0 && (
                 <div className="dice-cover">
-                  <PullableRect>
+                 
                     <WinkFace />
-                    </PullableRect>
+                
                 </div>
               )}
             </div>
