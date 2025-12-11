@@ -8,7 +8,7 @@ export default function Navbar() {
         </a>
         <ul>
             <li>
-            <a href="https://www.evelync.com/" className="contact-button">Creator 
+            <a href="https://www.linkedin.com/in/minglinchen/" className="contact-button">Creator 
             </a>
             </li>
             </ul>
