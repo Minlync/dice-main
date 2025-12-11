@@ -1,4 +1,19 @@
 /* Optional page centering */
+
+/* overlay covers the entire .wink container */
+.afterpressed-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* object-fit: cover; fill container */
+  z-index: 10;       /* above other elements */
+  pointer-events: none; /* let mouse events pass through */
+}
+
+
+
 .wink-wrapper {
     min-height: 100vh;
     display: flex;
@@ -70,3 +85,4 @@
   transform: translateX(-50%);
   }
   
+
