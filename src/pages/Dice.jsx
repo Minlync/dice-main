@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import '../style.css';
 import Fastfood from '../assets/dice1.png';
 import Italian from '../assets/Italianfood.svg';
@@ -9,21 +9,58 @@ import Mediterranean from '../assets/pinkface.svg';
 import WinkFace from "../components/WinkFace";
 
 const foodMap = {
-  1: 'Fast',           // front
-  2: 'Thai',           // bottom
-  3: 'Chinese',        // right
-  4: 'Seafood',        // left
-  5: 'Mediterranean',  // top
-  6: 'Italian',        // back
+  1: 'Fast',
+  2: 'Thai',
+  3: 'Chinese',
+  4: 'Seafood',
+  5: 'Mediterranean',
+  6: 'Italian',
 };
 
 const FACE_CLASSES = ['show-1', 'show-2', 'show-3', 'show-4', 'show-5', 'show-6'];
 
+const DIALOG_LINES = [
+  "Hi~ not sure what to eat? 🍽️🤔",
+
+  "Roll me! 🎲😋",
+  
+  "Do't move your mouse around!",
+  
+  "Don't touch me!🚫"
+
+];
+
 export default function HomePage() {
   const diceOneRef = useRef(null);
-  const [diceOne, setDiceOne] = useState(0); // 0 = cover state
+  const [diceOne, setDiceOne] = useState(0);
   const [popupMessage, setPopupMessage] = useState('');
   const [isRolling, setIsRolling] = useState(false);
+
+  const [visibleDialog, setVisibleDialog] = useState([]);
+
+  // 👉 dialog animation
+  useEffect(() => {
+    if (diceOne !== 0 || isRolling) return;
+  
+    setVisibleDialog([]); // reset
+  
+    // show first line immediately
+    setVisibleDialog([DIALOG_LINES[0]]);
+  
+    let index = 1; // start from second line
+    const interval = setInterval(() => {
+      setVisibleDialog([DIALOG_LINES[index]]); // replace previous sentence
+      index++;
+  
+      if (index >= DIALOG_LINES.length) {
+        clearInterval(interval);
+      }
+    }, 3000);
+  
+    return () => clearInterval(interval);
+  }, [diceOne, isRolling]);
+
+  
 
   const rollDice = () => {
     if (isRolling || !diceOneRef.current) return;
@@ -32,7 +69,6 @@ export default function HomePage() {
     setIsRolling(true);
     setPopupMessage(null);
 
-    // remove previous face classes
     el.classList.remove(...FACE_CLASSES);
     el.classList.add('rolling');
 
@@ -40,18 +76,19 @@ export default function HomePage() {
       el.removeEventListener('animationend', onEnd);
       el.classList.remove('rolling');
 
-      const finalSide = Math.floor(Math.random() * 6) + 1; // 1–6 only
+      const finalSide = Math.floor(Math.random() * 6) + 1;
 
-      // Force reflow
-      // eslint-disable-next-line no-unused-expressions
-      el.offsetWidth;
+      void el.offsetWidth; // reflow
+
 
       el.classList.add(`show-${finalSide}`);
+
       setDiceOne(finalSide);
       setPopupMessage({
         title: 'Congrats!',
         text: `You rolled out ${foodMap[finalSide]} food!`,
       });
+
       setIsRolling(false);
     };
 
@@ -63,36 +100,24 @@ export default function HomePage() {
       <div className="dice-flow">
         <div className="game">
           <div className="container">
-            <div className="ellipse-bg">
-            </div>
-            
-      
 
-          {/* 💬 talking bubble (appears after 2s, disappears on roll) */}
           {!isRolling && diceOne === 0 && (
   <div className="dice-dialog slide-in">
     <div className="dice-dialog-bubble">
-      <span>
-        Hi, don't know what to eat?
-        <br />
-        Roll me!
-        <br />
-        Hey, you know, move your mouse around me,
-        <br />
-        or maybe touch me?
-      </span>
+      {visibleDialog.map((line, i) => (
+        <div key={i} className="dialog-line fade-in">
+          {line}
+        </div>
+      ))}
     </div>
   </div>
 )}
 
-
             <div className="dice-wrapper">
-              {/* The actual 3D dice (always rendered so animation works) */}
               <div
                 id="dice1"
                 ref={diceOneRef}
                 className={`dice dice-one show-${diceOne === 0 ? 1 : diceOne}`}
-                aria-label={`Showing face ${diceOne}`}
               >
                 <div className="side one">
                   <img src={Fastfood} alt="Fastfood" className="dice-bg" />
@@ -119,12 +144,9 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* dice 0 = cover overlay, only before first roll */}
               {diceOne === 0 && (
                 <div className="dice-cover">
-                 
-                    <WinkFace />
-                
+                  <WinkFace />
                 </div>
               )}
             </div>
@@ -135,7 +157,6 @@ export default function HomePage() {
           id="roll"
           className="roll-dice-btn"
           onClick={rollDice}
-          style={{ fontSize: '18px' }}
           disabled={isRolling}
         >
           {isRolling ? 'Rolling...' : 'Surprise Me'}
