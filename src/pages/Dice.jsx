@@ -70,16 +70,20 @@ export default function HomePage() {
 
           {/* 💬 talking bubble (appears after 2s, disappears on roll) */}
           {!isRolling && diceOne === 0 && (
-           <div className="dice-dialog slide-in">
-             <div className="dice-dialog-bubble">
-             <span>
-              Hi, don't know what to eat?
-              <br />
-                Roll me!
-              </span>
-               </div>
-           </div>
-          )}
+  <div className="dice-dialog slide-in">
+    <div className="dice-dialog-bubble">
+      <span>
+        Hi, don't know what to eat?
+        <br />
+        Roll me!
+        <br />
+        Hey, you know, move your mouse around me,
+        <br />
+        or maybe touch me?
+      </span>
+    </div>
+  </div>
+)}
 
 
             <div className="dice-wrapper">
