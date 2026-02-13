@@ -1,15 +1,18 @@
-// import logo from './logo.svg';
-import './App.css';
-import Navbar from './Navbar';
-import Dice from './pages/Dice'; 
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./Navbar";
+import Dice from "./pages/Dice";
+import Whyproject from "./pages/Whyproject";
 
 function App() {
   return (
-    <div>
-        <Navbar />
-        <Dice />
-    </div>
- 
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Dice />} />
+        <Route path="/why-project" element={<Whyproject />} />
+      </Routes>
+    </Router>
   );
 }
 
